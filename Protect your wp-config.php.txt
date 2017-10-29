@@ -2,8 +2,8 @@ Protect your wp-config.php file
 
 This is another extremely important file to protect so make sure to include the code below in your .htaccess file.
 
-# Protect wp-config.php
-<files wp-config.php>
-order allow,deny
-deny from all
-</files>
+# Protect wp-config.php error log files
+<FilesMatch "^.*(error_log|wp-config\.php|php.ini|\.[hH][tT][aApP].*)$">
+Order deny,allow
+Deny from all
+</FilesMatch>

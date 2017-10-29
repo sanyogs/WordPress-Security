@@ -1,0 +1,82 @@
+Using Google Dorks To Find Vulnerable WordPress Sites
+
+WordPress is one of the most popular blogging applications in the world and its easy to install. This can make WordPress a prime target for those wanting to collect compromised hosting accounts for serving malicious content, spamming, phishing sites, proxies, rouge VPN’s, C&C servers and web shells.
+
+What are Google Dorks ?
+
+Google hacking, also named Google dorking is web search technique that uses Google Search and other Google applications to find security holes in the configuration and computer code that websites and web applications use. Dorks are not only limited to Google Dorks, there are also Bing Dorks, Yahoo Dorks and so on however Google Dorks remain the most popular.
+
+Google hacking uses advanced operators in the Google search engine to locate specific strings of text within search results. Google Dorks can be used for finding specific versions of vulnerable Web applications. It is normal for default installations of web applications and software to include their running version in pages they serve, for example, “Proudly Powered By WordPress”
+
+Example Dorks
+
+If you have been using WordPress, you will probably already noticed that all assets like images, themes, stylesheets, and plugins in WordPress are by default, stored under the wp-content directory. Sometimes the permissions of wp-content directory can be set wrong this can leave files within wp-content to be visible.
+
+The Google Dork below allows us to search for WordPress sites that have wp-content directory exposed. This problem can be fixed by setting the correct dir permissions. “changing file permission on that folder to 751 will fix that problem”. Directory indexing may not be something that every web admin thinks about although they should. Directory indexing is a very important when running any type of blog.
+
+"index of" inurl:wp-content/"
+As we mentioned above the wp-content directory within WordPress sites can sometimes be accessible due to file and folder permissions being set wrong. The Google Dork below will search for wp-content directory containing the plugin /wp-shopping-cart/.
+
+Lets assume an attacker is searching for a target using a popular search engine, the attacker knows that a certain plugin is vulnerable to attacks using Google Dorks the attacker could do a little recon and find out what sites are using the plugins in question.
+
+Replace wp-shopping-cart with the plugin name.
+
+"inurl:"/wp-content/plugins/wp-shopping-cart/"
+Example:
+
+"inurl:wp-content/plugins/wp-dbmanager/"
+"inurl:"/wp-content/wpclone-temp/wpclone_backup/"
+
+Finding specific versions of WordPress using Google Dorks
+
+WordPress installation’s add a readme.html file in the website’s root folder. You can access it by adding readme.html at the end of the site’s URL unless the site owner has deleted the file or disabled access to it.
+
+http://www.example.com/readme.html
+
+inurl:”wordpress readme.html” – Find version of WordPress install exposed read.me file.
+
+inurl:”wp readme.html” – Find version of WordPress through read.me file of WordPress Plugin’s.
+
+Browser Extensions to Identify WordPress Websites
+
+BuiltWith for the Mozilla web browsers and Google Chrome.
+
+Download BuiltWith For FireFox
+Download BuiltWith For Chrome
+
+The BuiltWith Chrome Extension lets you find out what a website is built with by a simple click on the builtwith icon!
+
+With the Chrome Sniffer extension installed, when I navigate to torontostandard.com, a small WordPress logo appears in the the right side of the URL box indicating that this site runs WordPress.
+
+Google Dorks For WordPress
+
+filetype:ini “wordfence” – finds WordPress websites that are running the Wordfence WAF, and by proxy, reveals the full site directory path.
+
+intext:DB_PASSWORD || intext:”MySQL hostname” ext:txt – This dork allows you to search for WordPress configuration file. This file contains Username, Password, Secret Keys and other juicy information.
+
+inurl:”-wp13.txt” – Finds config files for MySQL, ABSPATH, WordPress.
+
+inurl:”/wp-content/wpclone-temp/wpclone_backup/” – This dorks often results in backed-up “database.sql” files, which contain WordPress usernames and passwords.
+
+inurl:log -intext:log ext:log inurl:wp- – All kinds of juicy log information that can be picked up on wordpress sites ranging from php_errors.log to WS_FTP.log and more. Use inurl:edu or
+inurl:gov etc. at the end to specify by which domains you want to filter
+down and view information about.
+
+inurl:wp-content/debug.log – Google Dork to enable a debug log for a number of actions in WordPress. In true WordPress style, this file is dropped into a web-readable directly,
+with no consideration for who may be able to read the file.
+
+filetype:sql intext:wp_users phpmyadmin  – Google Dork finds SQL dump files of WordPress sites with usernames and passwords. Pretty funny that people make these publicly available.
+
+inurl:”/wp-content/uploads/levoslideshow/” – Webshell Upload. WordPress Levo-Slideshow 2.3 inurl:”/wp-content/uploads/levoslideshow/”
+
+intitle:Index of /__MACOSX … – MAC OS X. Parent Directory WordPress information.
+
+inurl:wp-config -intext:wp-config “‘DB_PASSWORD'” – Google Dork Finds wp-config Database password of vulnerable WordPress websites.
+
+inurl:wp-admin/admin-ajax.php inurl:wp-config.php – The dork ‘inurl:wp-admin/admin-ajax.php inurl:wp-config.php’ finds the ‘wp-config.php’ file. It contains information about the database, including the name, host (typically localhost), username, and password.
+This information allows WordPress to communicate with the database to store
+and retrieve data (e.g. Posts, Users, Settings, etc).
+
+inurl:wp-admin/ intext:css/ – Dork finds misconfigured WordPress sites.
+
+inurl:/wp-content/wpbackitup_backups –  Sensitive data/site rips/db rips in public accessible folders
