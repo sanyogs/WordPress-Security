@@ -1,0 +1,9 @@
+Protect your wp-config.php file
+
+This is another extremely important file to protect so make sure to include the code below in your .htaccess file.
+
+# Protect wp-config.php
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>

@@ -1,0 +1,9 @@
+Protect your error_log file
+
+It’s important to make sure that any error logs aren’t accessible include the code below in your .htaccess file..
+
+# Protect error_log
+<files error_log>
+order allow,deny
+deny from all
+</files>

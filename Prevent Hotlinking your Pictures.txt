@@ -1,0 +1,10 @@
+Prevent others from Hotlinking your Pictures.
+
+This will help your website from being drained of it’s resources when others try and hotlink images. Make sure to change the URL example to your URL.
+
+# Disable hotlinking of images
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?example.com [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]

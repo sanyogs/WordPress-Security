@@ -1,0 +1,6 @@
+Don’t Let People Browse your Directories
+
+This is a great way to prevent Directory Browsing.
+
+# Disable directory browsing
+Options All -Indexes

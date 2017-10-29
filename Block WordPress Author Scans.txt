@@ -1,0 +1,10 @@
+Block Author Scans
+
+Sometimes hackers will try and scan your author listings. You can block that.
+
+# BEGIN block author scans
+RewriteEngine On
+RewriteBase /
+RewriteCond %{QUERY_STRING} (author=\d+) [NC]
+RewriteRule .* - [F]
+# END block author scans

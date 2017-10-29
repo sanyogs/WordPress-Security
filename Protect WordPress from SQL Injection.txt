@@ -1,0 +1,11 @@
+Protect your WordPress Website from SQL Injection
+
+This provides protection against SQL Injection of your WordPress Database. Include the code below in your .htaccess file.
+
+# Protect from SQL Injection
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]

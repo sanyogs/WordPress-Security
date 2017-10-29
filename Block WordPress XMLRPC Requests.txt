@@ -1,0 +1,9 @@
+Block WordPress XMLRPC Requests
+
+If you’re not using this feature, then block it.
+
+# Block WordPress xmlrpc.php requests
+<Files xmlrpc.php>
+order deny,allow
+deny from all
+</Files>

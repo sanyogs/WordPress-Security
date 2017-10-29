@@ -1,0 +1,10 @@
+Protect your .htaccess file
+
+I’m mentioning this first because your .htaccess file is one of the most important files and it needs to be protected. Use the below code snippet to .htaccess file so it will make sure file is secure.
+
+# Protect .htaccess
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>

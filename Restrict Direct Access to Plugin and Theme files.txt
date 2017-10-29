@@ -1,0 +1,11 @@
+Restrict Direct Access to Plugin and Theme PHP files
+
+This will ensure that PHP files can’t be directly accessed. Include the code below in your .htaccess file..
+
+# Restrict Direct Access to Plugin and Theme PHP files
+RewriteCond %{REQUEST_URI} !^/wp-content/plugins/file/to/exclude\.php
+RewriteCond %{REQUEST_URI} !^/wp-content/plugins/directory/to/exclude/
+RewriteRule wp-content/plugins/(.*\.php)$ - [R=404,L]
+RewriteCond %{REQUEST_URI} !^/wp-content/themes/file/to/exclude\.php
+RewriteCond %{REQUEST_URI} !^/wp-content/themes/directory/to/exclude/
+RewriteRule wp-content/themes/(.*\.php)$ - [R=404,L]
